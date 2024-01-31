@@ -11,6 +11,7 @@ char[] boardArray = { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' };
 int playerTurn = 0;
 
 
+
 do
 {
 
@@ -20,9 +21,10 @@ do
     }
     else
     {
-        Console.WriteLine("Plaer 2, what spot do you want");
+        Console.WriteLine("Player 2, what spot do you want");
     }
 
+    TimursMethod(boardArray);
 
     if (playerTurn == 0)
     {
@@ -33,7 +35,7 @@ do
         playerTurn = 0;
     }
 
-} while MosMEthod() is null;
+} while MosMEthod(boardArray) is null;
 //Ask each player in turn for their choice and update the game board array
 //if statement: if team 1 then 'X' if team 2 'O'
 //if that spot already has something in it print something saying "no"
