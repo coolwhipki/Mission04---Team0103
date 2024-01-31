@@ -10,20 +10,20 @@ namespace Mission04___Team0103
 {
     internal class Supporting
     {
-        public void PrintBoard(char[] board)
+        public void PrintBoard(char[] boardArray)
         {
             // iterate through every cell of the board / every value of the array
-            for (int i = 0; i < board.Length; i++)
+            for (int i = 0; i < boardArray.Length; i++)
             {
                 // print out the value of the current cell
-                Console.Write($" {board[i]} ");
+                Console.Write($" {boardArray[i]} ");
                 // if current cell is the last cell in the row (cell 3, 6, or 9), proceed
                 if ((i + 1) % 3 == 0)
                 {
                     // create a new line
                     Console.WriteLine();
                     // if current cell is not the last cell of the board (cell 9), proceed
-                    if (i < board.Length - 1)
+                    if (i < boardArray.Length - 1)
                     {
                         // print a row seperator
                         Console.WriteLine("---|---|---");
@@ -37,49 +37,42 @@ namespace Mission04___Team0103
             }
         }
 
-        public int IfWinner(int player)
+        public char CheckWinner(char[] boardArray)
         {
-            //The player can only win if their figure (X or O) is the value 
-            //of at least one of these items:
-
-            // WinningOptions = [(boardArray[0], boardArray[1], boardArray[2]),
-            //                   (boardArray[0], boardArray[4], boardArray[8]),
-            //                   (boardArray[0], boardArray[3], boardArray[6]),
-            //                   (boardArray[1], boardArray[4], boardArray[7]),
-            //                   (boardArray[2], boardArray[4], boardArray[6]),
-            //                   (boardArray[2], boardArray[5], boardArray[8]),
-            //                   (boardArray[3], boardArray[4], boardArray[5]),
-            //                   (boardArray[6], boardArray[7], boardArray[8])];
-
-            bool gameOver = false;
-            
-            //loop until game is over (there is a winner or a tie)
-            while  (gameOver == false)
+        // Winning conditions
+            int[,] winConditions = new int[,]
             {
-                //Check if any of the items on the board is still empty
-                if (Array.Exists(boardArray, element => element == " "))
-                { 
-                    //if 'X' is the value in all three spots in one of the winningOptions 
-                        //then print ("player 1 is the winner!");
-                        //gameOver = true
-                    //elseif 'O' is the value in all thee spots in one of the winningOptions
-                        //then print ("player 2 is the winner!");
-                        //gameOver = true
-                    //else
-                        //go back to the top of the if statement again
-                //else = board is full
-                    //if 'X' is the value in all three spots in one of the winningOptions 
-                        //then print ("player 1 is the winner!");
-                        //gameOver = true
-                    //elseif 'O' is the value in all thee spots in one of the winningOptions
-                        //then print ("player 2 is the winner!");
-                        //gameOver = true
-                    //else
-                        //print ("its a tie!")
-                        //gameOver = true 
-                    ;
+                {0, 1, 2}, // Row 1
+                {3, 4, 5}, // Row 2
+                {6, 7, 8}, // Row 3
+                {0, 3, 6}, // Column 1
+                {1, 4, 7}, // Column 2
+                {2, 5, 8}, // Column 3
+                {0, 4, 8}, // Diagonal 1
+                {2, 4, 6}  // Diagonal 2
+            };
+
+            for (int i = 0; i < 8; i++)
+            {
+                int a = winConditions[i, 0];
+                int b = winConditions[i, 1];
+                int c = winConditions[i, 2];
+
+                // Check if the board has the winning combination
+                if (boardArray[a] != ' ' && boardArray[a] == boardArray[b] && boardArray[b] == boardArray[c])
+                {
+                    return boardArray[a]; // Return the winner ('X' or 'O')
                 }
             }
+
+            // Check if there are any empty spaces left
+            foreach (char space in boardArray)
+            {
+                if (space == ' ') return ' '; // Continue the game
+            }
+
+            // The game is a draw
+            return 'D';
         }
     }
 }
