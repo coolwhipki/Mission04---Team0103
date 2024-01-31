@@ -8,7 +8,32 @@ Console.WriteLine("Player 1 (X) - Player 2 (O)");
 char[] boardArray = { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' };
 
 
+do
+{
+    int playerTurn  = 0;
 
+
+
+    if (playerTurn == 0)
+    {
+        Console.WriteLine("Player 1, what spot do you want");
+    }
+    else
+    {
+
+    }
+
+
+    if (playerTurn == 0)
+    {
+        playerTurn = 1;
+    }
+    else if (playerTurn == 1)
+    {
+        playerTurn = 0;
+    }
+
+} while MosMEthod() is null;
 //Ask each player in turn for their choice and update the game board array
 //if statement: if team 1 then 'X' if team 2 'O'
 //if that spot already has something in it print something saying "no"
