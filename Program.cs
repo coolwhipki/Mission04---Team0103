@@ -5,14 +5,9 @@ Console.WriteLine("Player 1 (X) - Player 2 (O)");
 
 
 // Create a game board array to store the players’ choices
-// char[] board = { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' };
+char[] boardArray = { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' };
 
-List<string> words = new List<string>()
-            {
-                " ", " ", " ",
-                " ", " ", " ",
-                " ", " ", " ",
-            };
+
 
 //Ask each player in turn for their choice and update the game board array
 //if statement: if team 1 then 'X' if team 2 'O'
