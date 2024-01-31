@@ -8,11 +8,11 @@ Console.WriteLine("Player 1 (X) - Player 2 (O)");
 char[] boardArray = { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' };
 
 
+int playerTurn = 0;
+
+
 do
 {
-    int playerTurn  = 0;
-
-
 
     if (playerTurn == 0)
     {
@@ -20,7 +20,7 @@ do
     }
     else
     {
-
+        Console.WriteLine("Plaer 2, what spot do you want");
     }
 
 
