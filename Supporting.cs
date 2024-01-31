@@ -37,9 +37,17 @@ namespace Mission04___Team0103
             }
         }
 
+        //WinnerWinnerCheckTheWinner Method
         public string CheckWinner(char[] boardArray)
         {
-            // Winning conditions
+            // Using a two dimensional array to store the values of  
+            //each item of the boardArray in each potential winning pattern.
+
+            // Each key bracket represents one of the eight possible 
+            //three-in-a-row lines that a player could win by. 
+
+            // Position 0 represents top left corner, position 1 represents 
+            //top middle, position 2 represents top right corner, etc. 
             int[,] winConditions = new int[,]
             {
                 {0, 1, 2}, // Row 1
@@ -52,13 +60,16 @@ namespace Mission04___Team0103
                 {2, 4, 6}  // Diagonal 2
              };
 
+            // Iterate through each winning condition in the winConditions array.
             for (int i = 0; i < 8; i++)
             {
+                // int (a, b, c) = winCondition[row #,column #];
                 int a = winConditions[i, 0];
                 int b = winConditions[i, 1];
                 int c = winConditions[i, 2];
 
                 // Check if the board has the winning combination
+                //by making sure value is not blank and mathces the other two values
                 if (boardArray[a] != ' ' && boardArray[a] == boardArray[b] && boardArray[b] == boardArray[c])
                 {
                     // Return the winner ("Player one wins!" or "Player two wins!")
@@ -72,7 +83,8 @@ namespace Mission04___Team0103
                 if (space == ' ') return null; // Game continues, no winner yet
             }
 
-            // The game is a draw
+            // If none of the previous code applies, it must mean all spaces are filled,
+            //which means the game is a draw!
             return "It's a tie!";
         }
     }
